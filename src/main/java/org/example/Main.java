@@ -4,7 +4,12 @@ import org.flywaydb.core.Flyway;
 
 public class Main {
     public static void main(String[] args) {
-        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:file:C:/data/sample2", "sa","sa").load();
+        Main main = new Main();
+        main.migracia();
+    }
+
+    public void migracia(){
+        Flyway flyway = Flyway.configure().dataSource("jdbc:h2:tcp://localhost/~/init_db", "sa",null).load();
 
         flyway.migrate();
     }
